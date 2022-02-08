@@ -10,7 +10,7 @@ ENV PYTHONFAULTHANDLER 1
 FROM base AS python-deps
 
 # Install security updates, git, and compilation dependencies for pipenv
-COPY install_packages.sh .
+COPY docker/install_packages.sh .
 RUN ./install_packages.sh
 
 # Install python dependencies in /.venv
@@ -31,7 +31,10 @@ WORKDIR /home/appuser
 USER appuser
 
 # copy all files in repo over
-COPY . .
+COPY app.py ./app.py
+# COPY .env ./.env
+RUN chmod +x .env
+
 RUN mkdir logs
 RUN cat > logs/example.log
 

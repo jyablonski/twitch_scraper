@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+python-twitch-client = "==0.7.1"
+pandas = "==1.4.0"
+sqlalchemy = "==1.4.31"
+psycopg2-binary = "==2.9.3"
+
+[dev-packages]
+black = "==19.10b0"
+ipykernel = "*"
+
+[requires]
+python_version = "3.8"

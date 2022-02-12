@@ -14,7 +14,7 @@ logging.basicConfig(
     handlers=[logging.FileHandler("logs/example.log"), logging.StreamHandler()],
 )
 
-logging.info("STARTING TWITCH SCRAPE Version: 0.0.7")
+logging.info("STARTING TWITCH SCRAPE Version: 0.0.8")
 
 client = twitch.TwitchHelix(client_id=os.environ.get("client_id"),
                             client_secret=os.environ.get("client_secret"),
@@ -102,4 +102,4 @@ twitch_data = twitch_scrape(1000)
 conn = sql_connection(os.environ.get("RDS_SCHEMA"))
 write_to_sql(conn, twitch_data, "append")
 
-logging.info("FINISHED TWITCH SCRAPE Version: 0.0.7")
+logging.info("FINISHED TWITCH SCRAPE Version: 0.0.8")

@@ -25,7 +25,7 @@ RUN useradd --create-home appuser
 WORKDIR /home/appuser
 USER appuser
 
-COPY app.py ./app.py
+COPY src/app.py ./app.py
 
 RUN mkdir logs
 RUN cat > logs/example.log

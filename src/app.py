@@ -40,7 +40,7 @@ def sql_connection(rds_schema):
             # defining schema to connect to
             echo=False,
         )
-        logging.info(f"SQL Connection to schema: {rds_schema} Successful")
+        logging.info(f"SQL Connection to {RDS_IP} with user {RDS_USER} and schema: {rds_schema} Successful")
         return connection
     except exc.SQLAlchemyError as e:
         logging.error(f"SQL Connection to schema: {rds_schema} Failed, Error: {e}")

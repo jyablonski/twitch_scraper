@@ -2,3 +2,4 @@
 logs/*
 logs
 prac.ipynb
+__pycache__

@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  postgres_twitch:
+    image: postgres:13.0
+    environment:
+      - POSTGRES_USER=twitch
+      - POSTGRES_PASSWORD=twitch
+      - POSTGRES_DB=twitch
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_twitch_data:/var/lib/postgresql/data
+
+  twitch_scraper:
+      depends_on:
+        - postgres_twitch
+      build:
+          context: ..
+          dockerfile: docker/Dockerfile
+      image: twitch_scraper_local
+      env_file:
+        - .env
+
+volumes: 
+    postgres_twitch_data:
+# volumes:
+#   postgres_twitch:
+
+# NOTES
+# postgres_twitch is the name of the RDS IP in python
+# init sql file is needed to create a schema.
+# the environment variables come from the postgres image, which automatically creates that user and the database.
+# everything is read from the context of the local directory.
+
+# init sql is just for that init file
+# the 2nd volume is to PERSIST DATA between docker shutdowns.  data lives on my machine,
+#  and you create it in volumes and then label it at the bottom with volume again

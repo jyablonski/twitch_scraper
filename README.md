@@ -1,3 +1,3 @@
-# Verson: 0.0.8
+# Verson: 0.0.9
 
 # Practice Repo for Twitch.tv Metrics Scraping
